@@ -6,27 +6,46 @@ export class SortingItem {
   key: string;
   description: string;
   state: SORTING_STATE;
+  cortocircuit: boolean;
 
-  constructor(key: string, description: string, state?: SORTING_STATE) {
+  constructor(key: string, description: string, state?: SORTING_STATE, cortocircuit?: boolean) {
     this.key = key          || '';
     this.description = description  || '';
     this.state = state      || SORTING_STATE.NONE;
+    this.cortocircuit = cortocircuit    || false;
   }
 
   toggle(): void {
-    switch (this.state) {
-      case SORTING_STATE.ASCENDING:
-            this.state = SORTING_STATE.NONE;
-            break;
-      case SORTING_STATE.DESCENDING:
-        this.state = SORTING_STATE.ASCENDING;
-        break;
-      default:
-        this.state = SORTING_STATE.DESCENDING;
+    if (!this.cortocircuit) {
+      switch (this.state) {
+        case SORTING_STATE.ASCENDING:
+          this.state = SORTING_STATE.NONE;
+          break;
+        case SORTING_STATE.DESCENDING:
+          this.state = SORTING_STATE.ASCENDING;
+          break;
+        default:
+          this.state = SORTING_STATE.DESCENDING;
+      }
+    } else {
+      switch (this.state) {
+        case SORTING_STATE.ASCENDING:
+          this.state = SORTING_STATE.DESCENDING;
+          break;
+        case SORTING_STATE.DESCENDING:
+          this.state = SORTING_STATE.ASCENDING;
+          break;
+        default:
+          this.state = SORTING_STATE.ASCENDING;
+      }
     }
   }
   reset(): void {
     this.state = SORTING_STATE.NONE;
+  }
+
+  clone(): SortingItem {
+    return new SortingItem(this.key, this.description, this.state, this.cortocircuit);
   }
 }
 

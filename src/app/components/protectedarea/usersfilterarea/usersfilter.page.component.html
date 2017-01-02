@@ -7,6 +7,8 @@
   </h3>
 </div>
 <br/>
+<sorting-box (sorted)="sorted($event)" [items]="sortingItems" [selected]="currentItem"></sorting-box>
+<br/>
 <div class="container-fluid">
   <app-user-list [usersSubject]="users" [rolesSubject]="roles" [authsSubject]="auths"></app-user-list>
 </div>

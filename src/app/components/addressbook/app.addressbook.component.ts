@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AddressBookService } from '../../services/address-book-service';
 import { Contact, Item } from '../../models/address-book-models';
 import { FilterBoxComponent } from '../filterbox/filter-box-component';
@@ -84,8 +84,6 @@ export class AddressBookComponent implements OnInit {
   }
 
   sorted(selectedItem: SortingItem): void {
-    console.log('Sorting required for :');
-    console.log(selectedItem);
     AddressBookComponent.selectedItem =
       (!selectedItem || selectedItem.state === SORTING_STATE.NONE ? null : selectedItem);
     // TODO: apply or remove sorting ....

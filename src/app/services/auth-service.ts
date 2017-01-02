@@ -4,7 +4,7 @@ import {Subject} from 'rxjs';
 import {User, Role, Auth, Session} from '../models/login-models';
 import { BackEndService } from './back-end-service';
 import {OBJECT_BASE64_ENC, USER_SESSION_KEY} from '../shared/constants';
-import { Request, Filter, FILTER_TYPE } from '../models/back-end-model';
+import { Request, Filter, FILTER_TYPE, Sorter } from '../models/back-end-model';
 import { CloneableCreator } from '../models/base-model';
 import { SESSIONS_SERVICE, USERS_SERVICE, ROLES_SERVICE, AUTHS_SERVICE, USERS_SERVICE_USERNAME_PARAMETER,
         USERS_SERVICE_ROLE_PARAMETER, SERVICES_INDEX_PARAMETER } from '../shared/constants';
@@ -31,26 +31,26 @@ export class AuthService {
     this.checkLogged();
   }
 
-  getUsers(subscription: any): Subject<User[]> {
+  getUsers(subscription: any, sorter?: Sorter): Subject<User[]> {
     let create: Subject<User[]> = new Subject<User[]>();
-    let request: Request = Request.AsFullItemList(USERS_SERVICE);
+    let request: Request = Request.AsFullItemList(USERS_SERVICE, sorter);
     subscription = this.backendService.requireServiceQuery<User>(create, request, new CloneableCreator(User));
     return create;
   }
 
-  getUsersByKey(subscription: any, key: string, value: any): Subject<User[]> {
+  getUsersByKey(subscription: any, key: string, value: any, sorter?: Sorter): Subject<User[]> {
     let create: Subject<User[]> = new Subject<User[]>();
     let filter: Filter = new Filter(FILTER_TYPE.KEYVALUE, key, value);
-    let request: Request = Request.AsQuery(USERS_SERVICE, filter);
+    let request: Request = Request.AsQuery(USERS_SERVICE, filter, sorter);
     subscription = this.backendService.requireServiceQuery<User>(create, request, new CloneableCreator(User));
     return create;
   }
 
-  getUsersByFulText(subscription: any, value: any): Subject<User[]> {
+  getUsersByFulText(subscription: any, value: any, sorter?: Sorter): Subject<User[]> {
     let create: Subject<User[]> = new Subject<User[]>();
     let filter: Filter = new Filter(FILTER_TYPE.FULL_TEXT);
     filter.fullText = value;
-    let request: Request = Request.AsQuery(USERS_SERVICE, filter);
+    let request: Request = Request.AsQuery(USERS_SERVICE, filter, sorter);
     subscription = this.backendService.requireServiceQuery<User>(create, request, new CloneableCreator(User));
     return create;
   }
@@ -281,10 +281,10 @@ export class AuthService {
    Determines the number of users in the stream
    @return Subject<Users[]> A subscription for all users
    */
-  allUsers(): Subject<User[]> {
+  allUsers(sorter?: Sorter): Subject<User[]> {
     if (!this.userChain1) {
       this.userChain1 = new Subject<User[]>();
-      let subscriptionX: any = this.getUsers(this.subscription1).subscribe(
+      let subscriptionX: any = this.getUsers(this.subscription1, sorter).subscribe(
         (all: User[]) => {
           let users: User[] = [];
           all.forEach((next: User) => {
@@ -328,10 +328,10 @@ export class AuthService {
    @param role: number The role number to filter for ...
    @return Subject<Users[]> A subscription for all users by a specif role
    */
-  byRole(role: string): Subject<User[]> {
+  byRole(role: string, sorter?: Sorter): Subject<User[]> {
     if (!this.userChain2) {
       this.userChain2 = new Subject<User[]>();
-      let subscriptionX: any = this.getUsersByKey(this.subscription2, USERS_SERVICE_ROLE_PARAMETER, role).subscribe(
+      let subscriptionX: any = this.getUsersByKey(this.subscription2, USERS_SERVICE_ROLE_PARAMETER, role, sorter).subscribe(
         (all: User[]) => {
           let users: User[] = [];
           all.forEach((next: User) => users.push(next.clone()) );
@@ -367,10 +367,10 @@ export class AuthService {
    @param username: string The username number to filter for ...
    @return Subject<Users[]> A subscription for all users by a specif username
    */
-  byUserName(username: string): Subject<User[]> {
+  byUserName(username: string, sorter?: Sorter): Subject<User[]> {
     if (!this.userChain3) {
       this.userChain3 = new Subject<User[]>();
-      let subscriptionX: any = this.getUsersByKey(this.subscription3, USERS_SERVICE_USERNAME_PARAMETER, username).subscribe(
+      let subscriptionX: any = this.getUsersByKey(this.subscription3, USERS_SERVICE_USERNAME_PARAMETER, username, sorter).subscribe(
         (all: User[]) => {
           let users: User[] = [];
           all.forEach((next: User) => users.push(next.clone()) );
