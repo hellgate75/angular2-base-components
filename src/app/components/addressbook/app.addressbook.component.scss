@@ -1,0 +1,82 @@
+.address-book-table {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.address-book-table > .contact {
+  background-color: #f9f9f9;
+  border: 1px solid #716e6e;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 10px 10px 5px #716e6e;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.address-book-table > .contact.alternate {
+  background-color: #edf3c0;
+}
+.address-book-table > .contact > .row {
+  display: inline-flex;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.address-book-table > .contact > .row > .column4 {
+  position: relative;
+  float: left;
+  display: inline !important;
+  width: 25%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.address-book-table > .contact > .row > .column3 {
+  position: relative;
+  float: left;
+  display: inline !important;
+  width: 33%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.address-book-table > .contact > .row > .column2 {
+  position: relative;
+  float: left;
+  display: inline !important;
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.center, .column3.center, .column2.center {
+  text-align: center;
+  vertical-align: middle;
+}
+div.form-group > span {
+  position: relative;
+  float: right;
+  color: #072080;
+  margin-right: 10px;
+  font-size: 17px;
+  font-size: 1.3em;
+}
+@media (max-width: 849px) {
+  .address-book-table > .contact > .row {
+    display: inline-block;
+  }
+  .address-book-table > .contact > .row > .column4 {
+    width: 100%;
+    text-align: left;
+  }
+  .address-book-table > .contact > .row > .column3 {
+    width: 100%;
+    text-align: left;
+  }
+  .address-book-table > .contact > .row > .column2 {
+    width: 100%;
+    text-align: left;
+  }
+}

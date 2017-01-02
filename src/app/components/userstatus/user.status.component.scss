@@ -1,0 +1,15 @@
+.container {
+  display: inline-block;
+  width: 100%;
+  min-width: 100%;
+  border-radius: 6px;
+  border-radius: 0.4em;
+}
+.container-fluent > .well {
+  position: relative;
+  float: right;
+  padding: 6px;
+}
+.container-fluent > .fadeOut {
+  visibility: hidden;
+}

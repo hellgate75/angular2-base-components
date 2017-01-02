@@ -1,0 +1,94 @@
+.user-list-table {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.user-list-table > .user-tab {
+  background-color: #f9f9f9;
+  border: 1px solid #716e6e;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 10px 10px 5px #716e6e;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.user-list-table > .user-tab.alternate {
+  background-color: #edf3c0;
+}
+.user-list-table > .user-tab > .row {
+  display: inline-flex;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.user-list-table > .user-tab > .row > .column3 {
+  position: relative;
+  float: left;
+  display: inline !important;
+  width: 33%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.user-list-table > .user-tab > .row > .column2 {
+  position: relative;
+  float: left;
+  display: inline !important;
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.center, .column3.center, .column2.center {
+  text-align: center;
+  vertical-align: middle;
+}
+.buble-column {
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  margin: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 2px
+}
+.buble-column.color-admin {
+  color: #FFFFFF;
+  background-color: #000000;
+}.buble-column.color-content {
+  color: #ffffff;
+  background-color: red;
+}
+.buble-column.color-full_edit {
+  color: #ffffff;
+  background-color: darkgreen;
+}
+.buble-column.color-edit {
+  color: #ffffff;
+  background-color: darkgreen;
+}
+.buble-column.color-view {
+  color: blue;
+  background-color: yellow;
+}
+.buble-column.color-access {
+  color: #000000;
+  background-color: #eae8e8;
+}
+@media (max-width: 849px) {
+  .user-list-table > .user-tab > .row {
+    display: inline-block;
+  }
+  .user-list-table > .user-tab > .row > .column3 {
+    width: 100%;
+    text-align: left;
+  }
+  .user-list-table > .user-tab > .row > .column2 {
+    width: 100%;
+    text-align: left;
+  }
+  .buble-column {
+    width: 100%;
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "hellgate75",
+      "password": "Yml4aXVzMTk3NSE=",
+      "firstname": "",
+      "surname": "Administrator",
+      "role": "5"
+    },
+    {
+      "id": "2",
+      "username": "torellif",
+      "password": "RlRAdGhlYWEwMQ==",
+      "firstname": "Fabrizio",
+      "surname": "Torelli",
+      "role": "4"
+    },
+    {
+      "id": "3",
+      "username": "cestarof",
+      "password": "RkNAdGhlYWEwMQ==",
+      "firstname": "Fabiana",
+      "surname": "Cestaro",
+      "role": "4"
+    },
+    {
+      "id": "4",
+      "username": "user99",
+      "password": "cGFzc3dvcmQ5OQ==",
+      "firstname": "",
+      "surname": "Standard User",
+      "role": "2"
+    },
+    {
+      "id": "5",
+      "username": "editorial",
+      "password": "ZWRpdG9yaWFsOTk=",
+      "firstname": "",
+      "surname": "Editor",
+      "role": "3"
+    },
+    {
+      "id": "6",
+      "username": "user",
+      "password": "cGFzc3dvcmQ=",
+      "firstname": "",
+      "surname": "Guest User",
+      "role": "1"
+    }
+  ],
+  "people": [
+    {
+      "id": "1",
+      "firstname": "Fabrizio",
+      "surname": "Torelli",
+      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "city": "Dublin",
+      "county": "Dublin",
+      "country": "IE",
+      "contacts": [
+        {
+          "type": "email",
+          "value": "xxxxxxxxxxxx@gmail.com"
+        },
+        {
+          "type": "mobile",
+          "value": "+3538348XXXXX"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "firstname": "Mario",
+      "surname": "Rossi",
+      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "city": "Rome",
+      "county": "Lazio",
+      "country": "IT",
+      "contacts": [
+        {
+          "type": "email",
+          "value": "XXXXXXXXXXX@gmail.com"
+        },
+        {
+          "type": "mobile",
+          "value": "+394048XXXXX"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "firstname": "Carlo",
+      "surname": "Bianchi",
+      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "city": "Milan",
+      "county": "Lombardy",
+      "country": "IT",
+      "contacts": [
+        {
+          "type": "email",
+          "value": "XXXXXXXXXXXXXXX@gmail.com"
+        },
+        {
+          "type": "mobile",
+          "value": "+3933348XXXXX"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "firstname": "Marco",
+      "surname": "Neri",
+      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "city": "Naples",
+      "county": "CampaniA",
+      "country": "IT",
+      "contacts": [
+        {
+          "type": "email",
+          "value": "XXXXXXXXXXXX@gmail.com"
+        },
+        {
+          "type": "mobile",
+          "value": "+3920348XXXXX"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "firstname": "Igor",
+      "surname": "Cragchev",
+      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "city": "Ljubljiana",
+      "county": "Ljubljiana",
+      "country": "SL",
+      "contacts": [
+        {
+          "type": "email",
+          "value": "XXXXXXXXX@gmail.com"
+        },
+        {
+          "type": "mobile",
+          "value": "+485148XXXXX"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "id": "1",
+      "type": "email",
+      "value": "E-Mail"
+    },
+    {
+      "id": "2",
+      "type": "mobile",
+      "value": "Mobile Phone"
+    },
+    {
+      "id": "3",
+      "type": "homephone",
+      "value": "Home Phone"
+    },
+    {
+      "id": "4",
+      "type": "officephone",
+      "value": "Office Phone"
+    }
+  ],
+  "countries": [
+    {
+      "id": "1",
+      "type": "IE",
+      "value": "Republic of Ireland"
+    },
+    {
+      "id": "2",
+      "type": "IT",
+      "value": "Italy"
+    },
+    {
+      "id": "2",
+      "type": "DE",
+      "value": "Germany"
+    },
+    {
+      "id": "4",
+      "type": "SL",
+      "value": "Slovenia"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "name": "Guest User",
+      "auth": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Standard User",
+      "auth": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Privileged User",
+      "auth": [
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Admin User",
+      "auth": [
+        "1",
+        "2",
+        "5"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Platform Admin User",
+      "auth": [
+        "1",
+        "2",
+        "6"
+      ]
+    }
+  ],
+  "auths": [
+    {
+      "id": "1",
+      "type": "access",
+      "name": "Access"
+    },
+    {
+      "id": "2",
+      "type": "view",
+      "name": "View"
+    },
+    {
+      "id": "3",
+      "type": "edit",
+      "name": "Edit Basic"
+    },
+    {
+      "id": "4",
+      "type": "full_edit",
+      "name": "Full Edit"
+    },
+    {
+      "id": "5",
+      "type": "content",
+      "name": "Content Management"
+    },
+    {
+      "id": "6",
+      "type": "admin",
+      "name": "Platform Administration"
+    }
+  ],
+  "sessions": []
+}

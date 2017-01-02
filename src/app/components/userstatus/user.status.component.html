@@ -1,0 +1,6 @@
+<div class="container-fluent">
+    <div class="well" [ngClass]="{'fadeOut': !authService.isLogged()}" style="border-radius: 15px; border-radius: 1.2em;">
+      Logged in as <b>{{ authService.getUserName() }}</b><br/><br/>
+      <a href (click)="logout()" class="ui primary button" style="font-size: 14px;font-size: 1.0em;margin-top: -10px;">Log out</a>
+    </div>
+</div>

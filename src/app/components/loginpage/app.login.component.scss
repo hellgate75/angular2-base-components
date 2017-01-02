@@ -1,0 +1,44 @@
+.form-inline {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.form-inline > .form-group {
+  display: inline-flex;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.form-inline > .form-group > input {
+  width: 50%;
+  margin-left: 15px;
+  margin-right: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.form-inline > .form-group > label {
+  width: 50%;
+  margin-left: 15px;
+  margin-right: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+.center, .form-group.center {
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block ! important;
+}
+.btn.btn-primary.disabled > i {
+  color: #ffffff;
+  margin-right: 10px;
+  font-size: 19px;
+  font-size: 1.4em;
+}

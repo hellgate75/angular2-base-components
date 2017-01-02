@@ -1,0 +1,23 @@
+<div class="user-list-table">
+  <div *ngFor="let user of users; let i=index;" class="user-tab" [ngClass]="{'alternate': (i%2===1)}">
+    <div class="row">
+      <div class="column3" [ngStyle]="{'font-weight': 'bold', 'zoom': '1.4'}" title="{{user.name()}}">{{user.name()}}</div>
+    </div>
+    <div class="row">
+      <div class="column3" title="First Name : {{user.firstname}}">First Name : {{user.firstname}}</div>
+      <div class="column3 center" title="Surname : {{user.surname}}">Surname : {{user.surname}}</div>
+      <div class="column3 center" title="User Name : {{user.username}}" [ngStyle]="{'font-weight': 'bold'}">User Name :
+        <a  title="Access Users with UserName : {{user.username}}" [routerLink]="'/protected/user/'+user.username">
+          {{user.username}}</a></div>
+    </div>
+    <div class="row">
+      <div class="column3" [ngStyle]="{'font-weight': 'bold'}" title="{{getRoleDesc(user.role)}}">
+         Role : <a  title="Access Users with Role : {{getRoleDesc(user.role)}}"
+                    [routerLink]="'/protected/users/'+user.role">{{getRoleDesc(user.role)}}</a></div>
+    </div>
+    <div class="row">
+      <div *ngFor="let roleAuth of getRoleAuths(user.role); let i2=index;" class="column2 buble-column color-{{getAuthType(roleAuth)}}"
+           title="getAuthDesc({{roleAuth}})"><b>{{getAuthDesc(roleAuth)}}</b></div>
+    </div>
+  </div>
+</div>

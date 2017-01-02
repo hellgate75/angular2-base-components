@@ -1,0 +1,197 @@
+@import "../../variables.scss";
+
+h1, h2 {
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+}
+h3 {
+  text-align: center;
+  width: 100%;
+}
+.ui.steps .step, .ui.step {
+  font-size: 2rem;
+}
+.hidden {
+  display: none;
+}
+a:hover, a:focus {
+  text-decoration: none ! important;
+  font-weight: bold ! important;
+}
+@media (min-width: $screen-app-lg) {
+  h1 {
+    font-size: 39px ! important;
+  }
+  h2 {
+    font-size: 36px ! important;
+  }
+  h3 {
+    font-size: 27px ! important;
+  }
+  label {
+    font-size: 16px ! important;
+  }
+  input {
+    font-size: 16px ! important;
+  }
+  .ui.steps a.step,
+  .ui.steps a.step:hover {
+    font-size: 22px;
+  }
+  .ui.steps a.step:focus {
+    outline-color: rgb(51, 51, 51) ! important;
+    outline-style: none ! important;
+    outline-width:0px ! important;
+  }
+}
+@media (max-width: $screen-app-md) {
+  h1 {
+    font-size: 36px ! important;
+  }
+  h2 {
+    font-size: 33px ! important;
+  }
+  h3 {
+    font-size: 24px ! important;
+  }
+  label {
+    font-size: 14px ! important;
+  }
+  input {
+    font-size: 14px ! important;
+  }
+  .ui.steps a.step,
+  .ui.steps a.step:hover,
+  a.active.step:hover {
+    font-size: 20px;
+    border-bottom: 0.1rem solid #f0f0f0;
+  }
+  .ui.steps a.step:focus {
+    outline-color: rgb(51, 51, 51) ! important;
+    outline-style: none ! important;
+    outline-width:0px ! important;
+  }
+}
+@media (max-width: $screen-app-sm) {
+  h1 {
+    font-size: 22px ! important;
+  }
+  h2 {
+    font-size: 20px ! important;
+  }
+  h3 {
+    font-size: 17px ! important;
+  }
+  label {
+    font-size: 12px ! important;
+  }
+  input {
+    font-size: 12px ! important;
+  }
+  .ui.steps a.step,
+  .ui.steps a.step:hover  {
+    font-size: 16px;
+    border-bottom: 0.1rem solid #f0f0f0;
+    width: 100% !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 1.14285714em 2em;
+    border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  }
+  .ui.steps .step:after,
+  a.active.step:hover::after,
+  a.active.step:hover::after {
+    display: none ! important;
+  }
+  .ui.steps a.step:focus {
+    outline-color: rgb(51, 51, 51) ! important;
+    outline-style: none ! important;
+    outline-width:0px ! important;
+  }
+  .ui.steps {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    overflow: visible;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+@media (max-width: $screen-app-xs) {
+  h1 {
+    font-size: 17px ! important;
+  }
+  h2 {
+    font-size: 15px ! important;
+  }
+  h3 {
+    font-size: 12px ! important;
+  }
+  label {
+    font-size: 10px ! important;
+  }
+  input {
+    font-size: 10px ! important;
+  }
+  .ui.steps a.step,
+  .ui.steps a.step:hover  {
+    font-size: 14px;
+    border-bottom: 0.1rem solid #f0f0f0;
+    width: 100% !important;
+  }
+  .ui.steps a.step:focus {
+    outline-color: rgb(51, 51, 51) ! important;
+    outline-style: none ! important;
+    outline-width:0px ! important;
+  }
+  .ui.steps .step:after,
+  a.active.step:hover::after,
+  a.active.step:hover::after {
+    display: none ! important;
+  }
+}
+@media (max-width: $screen-app-xxs) {
+  h1 {
+    font-size: 13px ! important;
+  }
+  h2 {
+    font-size: 12px ! important;
+  }
+  h3 {
+    font-size: 10px ! important;
+  }
+  label {
+    font-size: 10px ! important;
+  }
+  input {
+    font-size: 10px ! important;
+  }
+  .ui.steps a.step,
+  .ui.steps a.step:hover  {
+    font-size: 14px;
+    border-bottom: 0.1rem solid #f0f0f0;
+    width: 100% !important;
+    text-decoration: none ! important;
+
+  }
+  .ui.steps a.step:focus {
+    outline-color: rgb(51, 51, 51) ! important;
+    outline-style: none ! important;
+    outline-width:0px ! important;
+  }
+  .ui.steps .step:after,
+  a.active.step:hover::after,
+  a.active.step:hover::after {
+    display: none ! important;
+  }
+}

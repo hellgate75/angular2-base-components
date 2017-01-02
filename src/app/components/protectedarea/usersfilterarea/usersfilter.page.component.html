@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <h3 title="Filtered By Role {{getRoleDesc()}} (Id : {{roleId}})">
+    Filtered By Role <b>{{getRoleDesc()}}</b> (Id : <b>{{roleId}}</b>)
+    &nbsp;&nbsp;<a class="btn btn-primary" title="View All Users"
+        [routerLink]="'/protected/users'">&lt;&nbsp;All Users</a>
+
+  </h3>
+</div>
+<br/>
+<div class="container-fluid">
+  <app-user-list [usersSubject]="users" [rolesSubject]="roles" [authsSubject]="auths"></app-user-list>
+</div>

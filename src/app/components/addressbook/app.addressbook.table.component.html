@@ -1,0 +1,21 @@
+<div class="address-book-table">
+  <div *ngFor="let contact of contacts; let i=index;" class="contact" [ngClass]="{'alternate': (i%2===1)}">
+    <div class="row">
+      <div class="column3" [ngStyle]="{'font-weight': 'bold', 'zoom': '1.4'}" title="{{contact.getName()}}">{{contact.getName()}}</div>
+    </div>
+    <div class="row">
+      <div class="column2" title="{{contact.address}}">{{contact.address}}</div>
+      <div class="column4 center" title="{{contact.city}}">{{contact.city}}</div>
+      <div class="column4 center" title="{{contact.county}}">{{contact.county}}</div>
+    </div>
+    <div class="row">
+      <div class="column3" [ngStyle]="{'font-weight': 'bold'}" title="{{translateCountry(contact.country)}}">
+        {{translateCountry(contact.country)}}</div>
+    </div>
+    <div class="row">
+      <div *ngFor="let contactType of contact.contacts" class="column2"
+           title="{{getContactDesc(contactType.type)}}: {{contactType.value}}">
+        {{getContactDesc(contactType.type)}}:&nbsp;&nbsp;<b>{{contactType.value}}</b></div>
+    </div>
+  </div>
+</div>

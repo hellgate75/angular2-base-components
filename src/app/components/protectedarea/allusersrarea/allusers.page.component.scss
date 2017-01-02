@@ -1,0 +1,16 @@
+div.form-group > div {
+  position: relative;
+  float: right;
+  color: #072080;
+  margin-right: 10px;
+  font-size: 17px;
+  font-size: 1.3em;
+}
+div.form-group > div.fa-flash,
+div.form-group > div.error
+{
+  color: darkred;
+}
+div.form-group > div.invisible {
+  visibility: hidden;
+}

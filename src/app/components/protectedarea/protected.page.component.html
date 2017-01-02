@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <h2 title="{{title}}">
+    {{title}}
+
+  </h2>
+</div>
+<br/>
+<div class="container-fluid">
+  <h3 title="{{description}}">
+    {{description}}
+  </h3>
+  <br/>
+  <h3 title="Welcome {{username()}}!!">
+    Welcome back {{usercaption()}} ({{username()}})!!
+  </h3>
+  <br/>
+  <div class="container-fluid" style="padding-top: 25px;">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

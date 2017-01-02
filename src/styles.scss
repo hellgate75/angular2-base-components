@@ -1,0 +1,16 @@
+@import "./vendor/css/jquery-ui.css";
+@import "./vendor/css/semantic.css";
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+@import "./variables.scss";
+.ui.menu .header.item > img.logo {
+    margin-right: 12px;
+}
+
+.intro {
+  margin-top: 10em;
+  font-size: 1.2em;
+  line-height: 1.5;
+}
