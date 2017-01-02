@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/src/assets/logos/angular.svg" alt="Angular2 Simple Router Navigation App" width="100" height="100"/>
+  <img src="/src/assets/logos/angular.png" alt="Angular2 Simple Router Navigation App" width="100" height="100"/>
 </p>
 
 # Angular2 Simple Router Navigation App
