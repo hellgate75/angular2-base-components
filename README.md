@@ -25,14 +25,14 @@ This repo shows an example application using RxJS and Angular 2. The goal is to 
 Default Screen
 </p>
 <p align="center">
-  <img src="/src/assets/readme/Default.png" alt="Angular2 Simple Router Navigation App" width="713" height="574"/>
+  <img src="/src/assets/readme/Default.png" alt="Angular2 Simple Router Navigation App" width="713" height="260"/>
 </p>
 <br/>
 <p align="center">
 Logged-in (user/password)
 </p>
 <p align="center">
-  <img src="/src/assets/readme/Logged-In.png" alt="Angular2 Simple Router Navigation App" width="713" height="574"/>
+  <img src="/src/assets/readme/Logged-In.png" alt="Angular2 Simple Router Navigation App" width="713" height="260"/>
 </p>
 
 ## Quick start
