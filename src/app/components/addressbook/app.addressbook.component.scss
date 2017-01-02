@@ -63,6 +63,10 @@ div.form-group > span {
   font-size: 17px;
   font-size: 1.3em;
 }
+div.form-group > span.error,
+div.form-group > span.fa.fa-flash {
+  color: #8b211e;
+}
 @media (max-width: 849px) {
   .address-book-table > .contact > .row {
     display: inline-block;

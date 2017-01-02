@@ -1,0 +1,29 @@
+.sorting-box {
+  display: inline;
+  &-item {
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  &-item > span {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #8c8c8c;
+  }
+  &-item > span.selected {
+    color: #000000 ! important;
+  }
+  &-item > i {
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-left: 5px;
+  }
+  &-item > i.fa.fa-chevron-up,
+  &-item > i.fa.fa-chevron-down {
+    color: #000000 ! important;
+  }
+
+}

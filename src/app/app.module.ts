@@ -18,6 +18,7 @@ import { AllUsersPageComponent, UserRoleFilterComponent, UserListComponent, User
   SingleUserFilterComponent }  from './components/protectedarea/protected.sub.components';
 import { PageNotFoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FilterBoxComponent } from './components/filterbox/filter-box-component';
+import { SortingBoxComponent, SortingBoxItemComponent } from './components/sortingbox/sorting-box-component';
 
 // Services
 import { AddressBookService } from './services/address-book-service';
@@ -92,7 +93,9 @@ let appRoutes: Routes = [
     SingleUserFilterComponent,
     UserListTableComponent,
     PageNotFoundComponent,
-    FilterBoxComponent
+    FilterBoxComponent,
+    SortingBoxComponent,
+    SortingBoxItemComponent
   ],
   imports: [
     BrowserModule,

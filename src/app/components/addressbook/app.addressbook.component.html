@@ -15,14 +15,15 @@
 <div class="container-fluid">
 <form class="form-inline" [ngStyle]="{'width': '100%'}">
   <div class="form-group" [ngStyle]="{'width': '100%'}">
-    <div class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true" [ngClass]="{'invisible': !isLoading}"></div>
-    <div class="fa fa-flash" aria-hidden="true" *ngIf="isError"></div>
-    <div class="error"  *ngIf="isError">Error</div>
+    <span class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true" [ngClass]="{'invisible': !isLoading}"></span>
+    <span class="fa fa-flash" aria-hidden="true" *ngIf="isError"></span>
+    <span class="error" *ngIf="isError">Error</span>
     <label for="filter-box" class="searchLabel" [ngStyle]="{'width': '100%'}">Full Text Search:</label>&nbsp;&nbsp;
     <filter-box (searchStart)="start($event)" (searchRequest)="search($event)" [requestForChange]="change"></filter-box>
   </div>
 </form>
 <br/>
-
+  <sorting-box (sorted)="sorted($event)" [items]="sortingItems" [selected]="currentItem"></sorting-box>
+<br/>
 <app-address-book-table [contacts]="contacts" [types]="contactTypes" [countries]="countries"></app-address-book-table>
 </div>

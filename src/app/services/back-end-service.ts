@@ -196,14 +196,14 @@ export class BackEndService {
           qryOptions = pageQuery;
         }
       }
-      if (!!request.sorter) {
-        let sortQuery: string = (!!searchKey || !!searchText || qryOptions.length ? '&' : '?');
-        if (!!request.sorter.key) {
-          sortQuery += '_sort=' + request.sorter.key + '&_order=' + ( request.sorter.ascending ? 'ASC' : 'DESC' );
-        }
-        if ( sortQuery.length > 2 ) {
-          qrySortOptions = sortQuery;
-        }
+    }
+    if (!!request.sorter) {
+      let sortQuery: string = (!!searchKey || !!searchText || qryOptions.length ? '&' : '?');
+      if (!!request.sorter.key) {
+        sortQuery += '_sort=' + request.sorter.key + '&_order=' + ( request.sorter.ascending ? 'ASC' : 'DESC' );
+      }
+      if ( sortQuery.length > 2 ) {
+        qrySortOptions = sortQuery;
       }
     }
     if (!!timeout) {

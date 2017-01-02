@@ -268,5 +268,19 @@
       "name": "Platform Administration"
     }
   ],
-  "sessions": []
+  "sessions": [
+    {
+      "id": "20534bbe-b9f1-48b4-b33a-f4319a2957cb",
+      "sessionKey": "20534bbe-b9f1-48b4-b33a-f4319a2957cb",
+      "user": {
+        "id": "2",
+        "username": "torellif",
+        "password": "RlRAdGhlYWEwMQ==",
+        "firstname": "Fabrizio",
+        "surname": "Torelli",
+        "role": "4"
+      },
+      "time": 1483384949555
+    }
+  ]
 }

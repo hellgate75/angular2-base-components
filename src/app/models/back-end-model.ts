@@ -1,5 +1,35 @@
 import { Cloneable } from './base-model';
 
+export enum SORTING_STATE {NONE, ASCENDING, DESCENDING};
+
+export class SortingItem {
+  key: string;
+  description: string;
+  state: SORTING_STATE;
+
+  constructor(key: string, description: string, state?: SORTING_STATE) {
+    this.key = key          || '';
+    this.description = description  || '';
+    this.state = state      || SORTING_STATE.NONE;
+  }
+
+  toggle(): void {
+    switch (this.state) {
+      case SORTING_STATE.ASCENDING:
+            this.state = SORTING_STATE.NONE;
+            break;
+      case SORTING_STATE.DESCENDING:
+        this.state = SORTING_STATE.ASCENDING;
+        break;
+      default:
+        this.state = SORTING_STATE.DESCENDING;
+    }
+  }
+  reset(): void {
+    this.state = SORTING_STATE.NONE;
+  }
+}
+
 export enum REQUEST_TYPE {FULL, QUERY, INSERT, UPDATE, DELETE};
 
 export enum FILTER_TYPE {KEYVALUE, LIKE, LESSTHANEQ, GREATERTHANEQ, FULL_TEXT};

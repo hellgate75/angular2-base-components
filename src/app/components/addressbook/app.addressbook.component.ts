@@ -2,7 +2,8 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { AddressBookService } from '../../services/address-book-service';
 import { Contact, Item } from '../../models/address-book-models';
 import { FilterBoxComponent } from '../filterbox/filter-box-component';
-import { Subject } from 'rxjs';
+import { SortingBoxComponent } from '../sortingbox/sorting-box-component';
+import { SortingItem, SORTING_STATE, Sorter } from '../../models/back-end-model';
 
 
 
@@ -44,7 +45,7 @@ export class AddressBookTableComponent implements OnInit {
 
 @Component({
   selector: 'app-address-book',
-  providers: [AddressBookService, AddressBookTableComponent, FilterBoxComponent],
+  providers: [AddressBookService, AddressBookTableComponent, FilterBoxComponent, SortingBoxComponent],
   templateUrl: './app.addressbook.component.html',
   styleUrls: ['./app.addressbook.component.scss']
 })
@@ -60,7 +61,19 @@ export class AddressBookComponent implements OnInit {
   change: string = AddressBookComponent.filterText;
   isError: boolean = false;
   isLoading: boolean = false;
+  /* tslint:disable */
+  static selectedItem: SortingItem = null;
+  /* tslint:enable */
+  currentItem: SortingItem = AddressBookComponent.selectedItem;
+  sortingItems: SortingItem[] = [];
+  sorter: Sorter;
+
   constructor(private addressBookService: AddressBookService) {
+    this.sortingItems.push (new SortingItem('country', 'Country'));
+    this.sortingItems.push (new SortingItem('city', 'City'));
+    this.sortingItems.push (new SortingItem('address', 'Address'));
+    this.sortingItems.push (new SortingItem('surname', 'Last Name'));
+    this.sortingItems.push (new SortingItem('firstname', 'First Name'));
   }
 
   start(event: boolean): void {
@@ -70,12 +83,31 @@ export class AddressBookComponent implements OnInit {
     this.reload(event);
   }
 
+  sorted(selectedItem: SortingItem): void {
+    console.log('Sorting required for :');
+    console.log(selectedItem);
+    AddressBookComponent.selectedItem =
+      (!selectedItem || selectedItem.state === SORTING_STATE.NONE ? null : selectedItem);
+    // TODO: apply or remove sorting ....
+    this.evaluateSorting();
+    this.reload(AddressBookComponent.filterText);
+  }
+
+  evaluateSorting(): void {
+    if (!!AddressBookComponent.selectedItem && AddressBookComponent.selectedItem.state !== SORTING_STATE.NONE) {
+      this.sorter = new Sorter(AddressBookComponent.selectedItem.key, AddressBookComponent.selectedItem.state === SORTING_STATE.ASCENDING);
+    } else {
+      this.sorter = null;
+    }
+  }
+
   ngOnInit(): void {
+    this.evaluateSorting();
     this.isLoading = true;
     if (AddressBookComponent.filterText !== '') {
       this.reload(AddressBookComponent.filterText);
     } else {
-      this.addressBookService.getContacts().subscribe(
+      this.addressBookService.getContacts(this.sorter).subscribe(
         (all: Contact[]) => {
           all.forEach((contact: Contact) => {
             this.contacts.push(new Contact(contact));
@@ -106,7 +138,7 @@ export class AddressBookComponent implements OnInit {
   reload(filter: string): void {
     this.isLoading = true;
     AddressBookComponent.filterText = filter || '';
-    this.addressBookService.getContactsByFullText(filter).subscribe(
+    this.addressBookService.getContactsByFullText(filter, this.sorter).subscribe(
       (all: Contact[]) => {
         this.contacts.splice(0, this.contacts.length);
         all.forEach((contact: Contact) => {

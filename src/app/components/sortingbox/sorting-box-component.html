@@ -1,0 +1,5 @@
+<div class="container-fluent">
+  <div class="sorting-box">
+    <sorting-box-item *ngFor="let item of items" [item]="item" (sorting)="sorting($event)"></sorting-box-item>
+  </div>
+</div>
