@@ -28,9 +28,15 @@ import { BackEndService } from './services/back-end-service';
 
 // External Services
 import { serviceServer, appConfig } from '../environments/environment';
-import {OBJECT_SERVICE_SERVER_CONF, OBJECT_APPLICATION_CONF, OBJECT_BASE64_ENC} from './shared/constants';
+import {OBJECT_SERVICE_SERVER_CONF, OBJECT_APPLICATION_CONF, OBJECT_BASE64_ENC,
+        USERS_SERVICE_META_KEY, CONTACTS_SERVICE_META_KEY} from './shared/constants';
+
+// Meta data
+const usersMeta = require('./config/users.metadata.json');
+const contactsMeta = require('./config/contacts.metadata.json');
 
 import { ServiceServer, AppEnv } from './shared/app-env.interface';
+
 let SERVICE_SERVER: ServiceServer = <ServiceServer>serviceServer;
 let APPLICATION_ENV: AppEnv = <AppEnv>appConfig;
 const base64 = require('base-64/base64.js');
@@ -110,6 +116,8 @@ let appRoutes: Routes = [
   providers: [
     CanActivateViaAuthGuard,
     CanActivateLoginGuard,
+    {provide: CONTACTS_SERVICE_META_KEY, useValue: contactsMeta},
+    {provide: USERS_SERVICE_META_KEY, useValue: usersMeta},
     {provide: OBJECT_BASE64_ENC, useValue: base64},
     {provide: OBJECT_APPLICATION_CONF, useValue: APPLICATION_ENV},
     {provide: OBJECT_SERVICE_SERVER_CONF, useValue: SERVICE_SERVER},

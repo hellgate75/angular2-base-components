@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { AddressBookService } from '../../services/address-book-service';
 import { Contact, Item } from '../../models/address-book-models';
 import { FilterBoxComponent } from '../filterbox/filter-box-component';
 import { SortingBoxComponent } from '../sortingbox/sorting-box-component';
 import { SortingItem, SORTING_STATE, Sorter } from '../../models/back-end-model';
+import { CONTACTS_SERVICE_META_KEY } from '../../shared/constants';
 
 
 
@@ -68,12 +69,11 @@ export class AddressBookComponent implements OnInit {
   sortingItems: SortingItem[] = [];
   sorter: Sorter;
 
-  constructor(private addressBookService: AddressBookService) {
-    this.sortingItems.push (new SortingItem('country', 'Country'));
-    this.sortingItems.push (new SortingItem('city', 'City'));
-    this.sortingItems.push (new SortingItem('address', 'Address'));
-    this.sortingItems.push (new SortingItem('surname', 'Last Name'));
-    this.sortingItems.push (new SortingItem('firstname', 'First Name'));
+  constructor(private addressBookService: AddressBookService,
+              @Inject(CONTACTS_SERVICE_META_KEY) private contactsMeta: any) {
+    this.contactsMeta.sorting.forEach((sortItem: any) => {
+      this.sortingItems.push (new SortingItem(sortItem.id, sortItem.name, sortItem.sort));
+    });
   }
 
   start(event: boolean): void {

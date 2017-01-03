@@ -1,0 +1,21 @@
+@import "../../../../variables";
+
+
+
+@media (max-width: $screen-app-sm-2) {
+  h3 {
+    font-size: 15px ! important;
+  }
+  .btn.btn-primary {
+    font-size: 13px ! important;
+  }
+}
+
+@media (max-width: $screen-app-sm-3) {
+  h3 {
+    font-size: 13px ! important;
+  }
+  .btn.btn-primary {
+    font-size: 11px ! important;
+  }
+}

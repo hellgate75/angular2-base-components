@@ -1,0 +1,20 @@
+{
+  "sorting": [
+    {"id": "role", "name": "Role", "sort": null, "cortocircuit": false},
+    {"id": "username", "name": "User Name", "sort": null, "cortocircuit": false},
+    {"id": "surname", "name": "Last Name", "sort": null, "cortocircuit": false},
+    {"id": "firstname", "name": "First Name", "sort": null, "cortocircuit": false},
+    {"id": "id", "name": "Identifier", "sort": 1, "default": true, "cortocircuit": true}
+  ],
+  "meta": {
+    "service": "users",
+    "fields": [
+      {"id": "surname", "name": "Last Name", "type": "string"},
+      {"id": "firstname", "name": "First Name", "type": "string"},
+      {"id": "username", "name": "User Name", "type": "string"},
+      {"id": "password", "name": "Password", "type": "password", "fishEye": true, "encodeOnSave": true},
+      {"id": "role", "name": "Role", "type": "list", "subType": "string", "linkedService": "roles", "linkedId": "id", "linkedDesc": "name"},
+      {"id": "id", "name": "Identifier", "type": "hidden"}
+    ]
+  }
+}

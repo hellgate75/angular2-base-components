@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {AuthService} from '../../../services/auth-service';
 import {UserListComponent} from '../userlist/userlist.component';
 import  {User, Role, Auth} from '../../../models/login-models';
@@ -6,6 +6,7 @@ import  {Subject} from 'rxjs';
 import { FilterBoxComponent } from '../../filterbox/filter-box-component';
 import { SortingBoxComponent } from '../../sortingbox/sorting-box-component';
 import { SortingItem, SORTING_STATE, Sorter } from '../../../models/back-end-model';
+import { USERS_SERVICE_META_KEY } from '../../../shared/constants';
 
 @Component({
   selector: 'app-protected-page',
@@ -35,7 +36,8 @@ export class AllUsersPageComponent implements OnInit {
   sorter: Sorter;
   defautSortingItem: SortingItem;
 
-  constructor(public service: AuthService) {
+  constructor(public service: AuthService,
+              @Inject(USERS_SERVICE_META_KEY) private usersMeta: any) {
     this.loading = new Subject<boolean>();
     this.error = new Subject<boolean>();
     this.loading.asObservable().subscribe(
@@ -44,12 +46,12 @@ export class AllUsersPageComponent implements OnInit {
     this.error.asObservable().subscribe(
       (next: boolean) => this.errorState = next
     );
-    this.sortingItems.push (new SortingItem('role', 'Role'));
-    this.sortingItems.push (new SortingItem('username', 'User Name'));
-    this.sortingItems.push (new SortingItem('surname', 'Last Name'));
-    this.sortingItems.push (new SortingItem('firstname', 'First Name'));
-    this.defautSortingItem = new SortingItem('id', 'Identifier', SORTING_STATE.ASCENDING, true);
-    this.sortingItems.push (new SortingItem('id', 'Identifier', SORTING_STATE.ASCENDING, true));
+    this.usersMeta.sorting.forEach((sortItem: any) => {
+      if (!!sortItem.default) {
+        this.defautSortingItem = new SortingItem(sortItem.id, sortItem.name, <SORTING_STATE>sortItem.sort, !!sortItem.cortocircuit);
+      }
+      this.sortingItems.push (new SortingItem(sortItem.id, sortItem.name, sortItem.sort, !!sortItem.cortocircuit));
+    });
   }
 
   start(event: boolean): void {

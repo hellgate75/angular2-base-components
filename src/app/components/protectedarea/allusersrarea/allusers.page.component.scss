@@ -1,3 +1,5 @@
+@import "../../../../variables";
+
 div.form-group > div {
   position: relative;
   float: right;
@@ -13,4 +15,13 @@ div.form-group > div.error
 }
 div.form-group > div.invisible {
   visibility: hidden;
+}
+
+@media (max-width: $screen-sorting-bar-xs) {
+  h3 {
+    font-size: 13px ! important;
+  }
+  .btn.btn-primary {
+    font-size: 11px ! important;
+  }
 }

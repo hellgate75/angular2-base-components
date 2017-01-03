@@ -1,0 +1,21 @@
+{
+  "sorting": [
+    {"id": "country", "name": "Country", "sort": null, "cortocircuit": false},
+    {"id": "city", "name": "City", "sort": null, "cortocircuit": false},
+    {"id": "address", "name": "Address", "sort": null, "cortocircuit": false},
+    {"id": "surname", "name": "Last Name", "sort": null, "cortocircuit": false},
+    {"id": "firstname", "name": "First Name", "sort": null, "cortocircuit": false}
+  ],
+  "meta": {
+    "service": "people",
+    "fields": [
+      {"id": "surname", "name": "Last Name", "type": "string", "required": true},
+      {"id": "firstname", "name": "First Name", "type": "string", "required": true},
+      {"id": "county", "name": "County", "type": "string", "required": true},
+      {"id": "city", "name": "City", "type": "string", "required": true},
+      {"id": "country", "name": "Country", "type": "list", "required": true, "subType": "string", "linkedService": "roles", "linkedId": "id", "linkedDesc": "name"},
+      {"id": "contacts", "name": "Contacts", "type": "map", "required": true, "mapType": "type:type,value:@string", "linkedService": "roles", "linkedId": "type", "linkedDesc": "value"},
+      {"id": "id", "name": "Identifier", "type": "hidden"}
+    ]
+  }
+}

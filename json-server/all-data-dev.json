@@ -270,8 +270,8 @@
   ],
   "sessions": [
     {
-      "id": "20534bbe-b9f1-48b4-b33a-f4319a2957cb",
-      "sessionKey": "20534bbe-b9f1-48b4-b33a-f4319a2957cb",
+      "id": "bc0db7ab-76c8-4afe-93db-af79553cf46d",
+      "sessionKey": "bc0db7ab-76c8-4afe-93db-af79553cf46d",
       "user": {
         "id": "2",
         "username": "torellif",
@@ -280,7 +280,7 @@
         "surname": "Torelli",
         "role": "4"
       },
-      "time": 1483384949555
+      "time": 1483473791211
     }
   ]
 }

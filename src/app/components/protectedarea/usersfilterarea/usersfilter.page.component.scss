@@ -1,0 +1,10 @@
+@import "../../../../variables";
+
+@media (max-width: $screen-sorting-bar-xs) {
+  h3 {
+    font-size: 13px ! important;
+  }
+  .btn.btn-primary {
+    font-size: 11px ! important;
+  }
+}

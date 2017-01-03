@@ -4,6 +4,8 @@ export const OBJECT_APPLICATION_CONF = {};
 export const OBJECT_BASE64_ENC = {};
 
 export const USER_SESSION_KEY = 'X-SESSION-KEY';
+export const USERS_SERVICE_META_KEY = 'X-USERS-META';
+export const CONTACTS_SERVICE_META_KEY = 'X-CONTACTS-META';
 
 export const SERVICES_INDEX_PARAMETER = 'id';
 export const USERS_SERVICE = 'users';

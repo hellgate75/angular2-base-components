@@ -7,6 +7,7 @@ import  {Subject} from 'rxjs';
 import { SortingBoxComponent } from '../../sortingbox/sorting-box-component';
 import { AllUsersPageComponent } from '../allusersrarea/allusers.page.component';
 import { SortingItem, SORTING_STATE, Sorter } from '../../../models/back-end-model';
+import { USERS_SERVICE_META_KEY } from '../../../shared/constants';
 
 @Component({
   selector: 'app-userfilter-page',
@@ -33,18 +34,27 @@ export class UserRoleFilterComponent implements OnInit {
 
   constructor(public service: AuthService,
               @Inject(Router) public router: Router,
-              @Inject(ActivatedRoute) public routes: ActivatedRoute) {
+              @Inject(ActivatedRoute) public routes: ActivatedRoute,
+              @Inject(USERS_SERVICE_META_KEY) private usersMeta: any) {
     this.sub = this.routes
       .params
       .subscribe(params => {
         // Récupération des valeurs de l'URL
         this.roleId = params['role']; // --> Name must match wanted paramter
       });
+    this.usersMeta.sorting.forEach((sortItem: any) => {
+      if (!!sortItem.default) {
+        this.defautSortingItem = new SortingItem(sortItem.id, sortItem.name, <SORTING_STATE>sortItem.sort, !!sortItem.cortocircuit);
+      }
+      this.sortingItems.push (new SortingItem(sortItem.id, sortItem.name, sortItem.sort, !!sortItem.cortocircuit));
+    });
+/*
     this.sortingItems.push (new SortingItem('username', 'User Name'));
     this.sortingItems.push (new SortingItem('surname', 'Last Name'));
     this.sortingItems.push (new SortingItem('firstname', 'First Name'));
     this.defautSortingItem = new SortingItem('id', 'Identifier', SORTING_STATE.ASCENDING, true);
     this.sortingItems.push (new SortingItem('id', 'Identifier', SORTING_STATE.ASCENDING, true));
+*/
   }
 
   sorted(selectedItem: SortingItem): void {

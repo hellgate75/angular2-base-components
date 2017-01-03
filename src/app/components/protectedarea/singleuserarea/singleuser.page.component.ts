@@ -8,6 +8,7 @@ import  {Subject} from 'rxjs';
 @Component({
   selector: 'app-userfilter-page',
   templateUrl: './singleuser.page.component.html',
+  styleUrls: ['./singleuser.page.component.scss'],
   providers: [AuthService, UserListComponent]
 })
 export class SingleUserFilterComponent implements OnInit {
