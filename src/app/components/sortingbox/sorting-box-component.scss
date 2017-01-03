@@ -1,3 +1,5 @@
+@import "../../../variables";
+
 .sorting-box {
   display: inline;
   &-item {
@@ -25,5 +27,60 @@
   &-item > i.fa.fa-chevron-down {
     color: #000000 ! important;
   }
+  &-item {
+    top: -5px;
+  }
+}
+@media (min-width: $screen-sorting-bar-lg) {
+  .sorting-box {
+    &-item > span {
+      font-size: 18px !important;
+    }
+  }
+}
+@media (min-width: $screen-sorting-bar-md) {
+  .sorting-box {
+    &-item > span {
+      font-size: 16px;
+    }
+    &-item {
+      top: -5px;
+    }
+  }
+}
 
+@media (max-width: $screen-sorting-bar-sm-2) {
+  .sorting-box {
+    &-item > span {
+      font-size: 14px;
+    }
+    &-item {
+      top: -12px;
+    }
+  }
+}
+@media (max-width: $screen-sorting-bar-sm) {
+  .sorting-box {
+    &-item > span {
+      font-size: 10px;
+    }
+    &-item {
+      top: -17px;
+    }
+  }
+}
+@media (max-width: $screen-sorting-bar-xs) {
+  .sorting-box {
+    display: block;
+    &-item {
+      display: block;
+      font-size: 10px;
+      margin-left: 0px;
+      width: 100%;
+      text-align: center;
+    }
+    &-item > span {
+      font-size: 12px;
+    }
+  }
 }

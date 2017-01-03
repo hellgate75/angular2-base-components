@@ -1,3 +1,5 @@
+@import "../../../../variables";
+
 .user-list-table {
   display: block;
   width: 100%;
@@ -76,7 +78,7 @@
   color: #000000;
   background-color: #eae8e8;
 }
-@media (max-width: 849px) {
+@media (max-width: $screen-generic-list-xs) {
   .user-list-table > .user-tab > .row {
     display: inline-block;
   }
