@@ -11,10 +11,11 @@
     "fields": [
       {"id": "surname", "name": "Last Name", "type": "string", "required": true},
       {"id": "firstname", "name": "First Name", "type": "string", "required": true},
-      {"id": "county", "name": "County", "type": "string", "required": true},
+      {"id": "address", "name": "Address", "type": "string", "required": true},
       {"id": "city", "name": "City", "type": "string", "required": true},
-      {"id": "country", "name": "Country", "type": "list", "required": true, "subType": "string", "linkedService": "roles", "linkedId": "id", "linkedDesc": "name"},
-      {"id": "contacts", "name": "Contacts", "type": "map", "required": true, "mapType": "type:type,value:@string", "linkedService": "roles", "linkedId": "type", "linkedDesc": "value"},
+      {"id": "county", "name": "County", "type": "string", "required": true},
+      {"id": "country", "name": "Country", "type": "list", "required": true, "subType": "string", "linkedService": "countries", "linkedId": "type", "linkedDesc": "value"},
+      {"id": "contacts", "name": "Contacts", "type": "map", "required": true, "mapType": "id#type:type,value#value:value@string", "linkedService": "contacts", "linkedId": "type", "linkedDesc": "value"},
       {"id": "id", "name": "Identifier", "type": "hidden"}
     ]
   }

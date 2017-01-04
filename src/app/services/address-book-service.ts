@@ -1,7 +1,7 @@
 import {Injectable, Inject} from '@angular/core';
 import {Contact, Item} from '../models/address-book-models';
 import { Request, Filter, FILTER_TYPE, Sorter } from '../models/back-end-model';
-import { CloneableCreator } from '../models/base-model';
+import {CloneableCreator, Cloneable} from '../models/base-model';
 import {Subject} from 'rxjs';
 import { BackEndService } from './back-end-service';
 import { CONTACTS_SERVICE, CONTACT_TYPES_SERVICE, COUNTRIES_SERVICE } from '../shared/constants';
@@ -16,6 +16,27 @@ export class AddressBookService {
     let create: Subject<Contact[]> = new Subject<Contact[]>();
     let request: Request = Request.AsFullItemList(CONTACTS_SERVICE, sortRule);
     this.backendService.requireServiceQuery<Contact>(create, request, new CloneableCreator(Contact));
+    return create;
+  }
+
+  addContact(contact: Cloneable): Subject<boolean> {
+    let create: Subject<boolean> = new Subject<boolean>();
+    let request: Request = Request.AsInsert(CONTACTS_SERVICE, contact.id, contact);
+    this.backendService.requireServiceDML(create, request);
+    return create;
+  }
+
+  updateContact(contact: Cloneable): Subject<boolean> {
+    let create: Subject<boolean> = new Subject<boolean>();
+    let request: Request = Request.AsUpdate(CONTACTS_SERVICE, contact.id, contact);
+    this.backendService.requireServiceDML(create, request);
+    return create;
+  }
+
+  deleteContact(contact: Cloneable): Subject<boolean> {
+    let create: Subject<boolean> = new Subject<boolean>();
+    let request: Request = Request.AsDelete(CONTACTS_SERVICE, contact.id);
+    this.backendService.requireServiceDML(create, request);
     return create;
   }
 

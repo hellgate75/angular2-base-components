@@ -17,5 +17,15 @@
            title="{{getContactDesc(contactType.type)}}: {{contactType.value}}">
         {{getContactDesc(contactType.type)}}:&nbsp;&nbsp;<b>{{contactType.value}}</b></div>
     </div>
+    <div class="container-flex">
+      <div class="ui-buttonset">
+        <a class="action-link red" (click)="deleteContact(contact.id)">
+          <i class="fa fa-close" aria-hidden="true"></i> Delete
+        </a>
+        <a class="action-link green" (click)="updateContact(contact.id)">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+        </a>
+      </div>
+    </div>
   </div>
 </div>

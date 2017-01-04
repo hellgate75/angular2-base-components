@@ -25,5 +25,13 @@
 <br/>
   <sorting-box (sorted)="sorted($event)" [items]="sortingItems" [selected]="currentItem"></sorting-box>
 <br/>
-<app-address-book-table [contacts]="contacts" [types]="contactTypes" [countries]="countries"></app-address-book-table>
+<label class="selector">
+  <i class="fa fa-plus-circle" (click)="addContact()" aria-hidden="true"></i>
+  Add New Contact
+</label>
+<br/>
+<app-address-book-table [contacts]="contacts" [types]="contactTypes" [countries]="countries"
+                        (update)="updateContact($event)" (delete)="deleteContact($event)" ></app-address-book-table>
 </div>
+<edit-dialog [metadata]="contactsMeta" [linkeddata]="metaValues" [activation]="dialogActivation"
+             [width]="600" [height]="600" (changed)="contactChanged($event)"></edit-dialog>

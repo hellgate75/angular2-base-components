@@ -1,11 +1,13 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Output, Inject, EventEmitter } from '@angular/core';
 import { AddressBookService } from '../../services/address-book-service';
 import { Contact, Item } from '../../models/address-book-models';
 import { FilterBoxComponent } from '../filterbox/filter-box-component';
 import { SortingBoxComponent } from '../sortingbox/sorting-box-component';
 import { SortingItem, SORTING_STATE, Sorter } from '../../models/back-end-model';
+import { Cloneable } from '../../models/base-model';
 import { CONTACTS_SERVICE_META_KEY } from '../../shared/constants';
-
+import { EditDialogComponent } from '../editcomponent/edit-dialog-component';
+import { Subject } from 'rxjs'
 
 
 @Component({
@@ -18,13 +20,24 @@ export class AddressBookTableComponent implements OnInit {
   @Input() contacts: Contact[];
   @Input() types: Item[];
   @Input() countries: Item[];
+  @Output() update: EventEmitter<Contact>;
+  @Output() delete: EventEmitter<Contact>;
 
   constructor() {
+    this.update = new EventEmitter<Contact>();
+    this.delete = new EventEmitter<Contact>();
   }
 
   ngOnInit(): void {
   }
-
+  deleteContact(contactId: string): void {
+    let contact: Contact = this.contacts.filter( (item: Contact) => { return item.id === contactId; } )[0];
+    this.delete.emit(contact);
+  }
+  updateContact(contactId: string): void {
+    let contact: Contact = this.contacts.filter( (item: Contact) => { return item.id === contactId; } )[0];
+    this.update.emit(contact);
+  }
   translateCountry(code: string): string {
     let selectedCountry: Item = this.countries ? (this.countries.filter((curr: Item) => { if (curr.type === code) {
       return curr;
@@ -46,7 +59,8 @@ export class AddressBookTableComponent implements OnInit {
 
 @Component({
   selector: 'app-address-book',
-  providers: [AddressBookService, AddressBookTableComponent, FilterBoxComponent, SortingBoxComponent],
+  providers: [AddressBookService, AddressBookTableComponent, FilterBoxComponent,
+              SortingBoxComponent, EditDialogComponent],
   templateUrl: './app.addressbook.component.html',
   styleUrls: ['./app.addressbook.component.scss']
 })
@@ -68,16 +82,112 @@ export class AddressBookComponent implements OnInit {
   currentItem: SortingItem = AddressBookComponent.selectedItem;
   sortingItems: SortingItem[] = [];
   sorter: Sorter;
+  metaValues: any = {};
+  dialogActivation: EventEmitter<Cloneable>;
 
   constructor(private addressBookService: AddressBookService,
               @Inject(CONTACTS_SERVICE_META_KEY) private contactsMeta: any) {
     this.contactsMeta.sorting.forEach((sortItem: any) => {
       this.sortingItems.push (new SortingItem(sortItem.id, sortItem.name, sortItem.sort));
     });
+    this.metaValues = {
+      'contacts': this.contactTypes,
+      'countries': this.countries
+    };
+    this.dialogActivation = new EventEmitter<Cloneable>();
+  }
+
+  contactChanged(event: Cloneable): void {
+    if (!!event) {
+      let selectedContact: Contact = this.contacts.filter((next: Contact) => {
+        return next.id === event.id;
+      })[0];
+      if (!!selectedContact) {
+        let selectedContactBackup: Contact = selectedContact.clone();
+        selectedContact.reverse(event);
+
+        let response: Subject<boolean> = this.addressBookService.updateContact(selectedContact);
+        response.subscribe(
+          (next: boolean) => {
+            if (!!next) {
+              this.successXHR('update');
+            } else {
+              this.unsuccessXHR('update');
+              selectedContact = selectedContactBackup;
+            }
+          },
+          (err: any) => {
+            this.unsuccessXHR('update');
+            selectedContact = selectedContactBackup;
+          }
+        );
+      } else {
+        let response: Subject<boolean> = this.addressBookService.addContact(event);
+        response.subscribe(
+          (next: boolean) => {
+            if (!!next) {
+              this.contacts.push((<Contact>event).clone());
+              this.successXHR('insert');
+            } else {
+              this.unsuccessXHR('insert');
+            }
+          },
+          (err: any) => {
+            this.unsuccessXHR('insert');
+          }
+        );
+      }
+    }
+  }
+
+  successXHR(type: string): void {
+    // Here code to show message
+    console.log(type + ' successful ...');
+  }
+
+  unsuccessXHR(type: string): void {
+    // Here code to show message
+    console.log(type + ' failed ...');
+  }
+
+  deleteContact(contact: Contact): void {
+    if (!!event) {
+      let selectedContact: Contact = this.contacts.filter((next: Contact) => {
+        return next.id === contact.id;
+      })[0];
+      if (!!selectedContact) {
+        let response: Subject<boolean> = this.addressBookService.deleteContact(selectedContact);
+        response.subscribe(
+          (next: boolean) => {
+            if (!!next) {
+              let contactIndex: number = this.contacts.indexOf(selectedContact);
+              if (contactIndex >= 0) {
+                this.contacts.splice(contactIndex, 1);
+              }
+              this.successXHR('delete');
+            } else {
+              this.unsuccessXHR('delete');
+            }
+          },
+          (err: any) => {
+            this.unsuccessXHR('delete');
+          }
+        );
+      }
+    }
+  }
+
+  addContact(): void {
+    let contact: Contact = Contact.empty();
+    this.updateContact(contact);
+  }
+
+  updateContact(contact: Contact): void {
+    this.dialogActivation.emit(contact);
   }
 
   start(event: boolean): void {
-   }
+  }
 
   search(event: string): void {
     this.reload(event);

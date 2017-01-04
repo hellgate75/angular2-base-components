@@ -54,18 +54,20 @@
       "id": "1",
       "firstname": "Fabrizio",
       "surname": "Torelli",
-      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "address": "Apt. 666, Grand Canal Evenue, D04",
       "city": "Dublin",
       "county": "Dublin",
       "country": "IE",
       "contacts": [
         {
+          "id": "85080a60-7015-4db4-b440-b6849a7b7232",
           "type": "email",
-          "value": "xxxxxxxxxxxx@gmail.com"
+          "value": "fabrizio.torelli@gmail.com"
         },
         {
+          "id": "062a77f6-605f-46a4-bc8c-73ba1b40a9b5",
           "type": "mobile",
-          "value": "+3538348XXXXX"
+          "value": "+35383480000000"
         }
       ]
     },
@@ -73,18 +75,20 @@
       "id": "2",
       "firstname": "Mario",
       "surname": "Rossi",
-      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "address": "via della scrofa, 12",
       "city": "Rome",
       "county": "Lazio",
       "country": "IT",
       "contacts": [
         {
+          "id": "b2fbf2cc-ac82-4769-9b55-7ff702104a80",
           "type": "email",
-          "value": "XXXXXXXXXXX@gmail.com"
+          "value": "mario.rossi@gmail.com"
         },
         {
+          "id": "4934925f-a8dc-4d72-9f30-7dc20a20a5db",
           "type": "mobile",
-          "value": "+394048XXXXX"
+          "value": "+394048111111"
         }
       ]
     },
@@ -92,18 +96,20 @@
       "id": "3",
       "firstname": "Carlo",
       "surname": "Bianchi",
-      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "address": "Piazza Sempione, 109",
       "city": "Milan",
       "county": "Lombardy",
       "country": "IT",
       "contacts": [
         {
+          "id": "811f8e14-3733-45fc-9282-b5bd770f6b56",
           "type": "email",
-          "value": "XXXXXXXXXXXXXXX@gmail.com"
+          "value": "carlo.bianchi@gmail.com"
         },
         {
+          "id": "41685cb8-0cde-49f2-b376-877ba5baf7da",
           "type": "mobile",
-          "value": "+3933348XXXXX"
+          "value": "+3933348222222"
         }
       ]
     },
@@ -111,18 +117,20 @@
       "id": "4",
       "firstname": "Marco",
       "surname": "Neri",
-      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "address": "via San Silvestro, 15",
       "city": "Naples",
-      "county": "CampaniA",
+      "county": "Campania",
       "country": "IT",
       "contacts": [
         {
+          "id": "d1c5dfd3-1149-46c3-83d5-37e1e3856e74",
           "type": "email",
-          "value": "XXXXXXXXXXXX@gmail.com"
+          "value": "marco.neri@gmail.com"
         },
         {
+          "id": "002ad511-b641-4fc6-b5a8-b223ad335cde",
           "type": "mobile",
-          "value": "+3920348XXXXX"
+          "value": "+3920348333333"
         }
       ]
     },
@@ -130,18 +138,46 @@
       "id": "5",
       "firstname": "Igor",
       "surname": "Cragchev",
-      "address": "Apt. YYYY, XXXXXXXXXXXXX, ZZZZZZ",
+      "address": "24 Ljiubljiana Ulica",
       "city": "Ljubljiana",
       "county": "Ljubljiana",
       "country": "SL",
       "contacts": [
         {
+          "id": "50babbe6-125b-47a4-b07c-1550a509d106",
           "type": "email",
-          "value": "XXXXXXXXX@gmail.com"
+          "value": "igor.cragchev@gmail.sl"
         },
         {
+          "id": "eef23f86-2a2f-4459-b672-9db1a3ceae52",
           "type": "mobile",
-          "value": "+485148XXXXX"
+          "value": "+485148444444"
+        }
+      ]
+    },
+    {
+      "id": "20fe2c03-2f0c-41fd-a47d-5736351bbac9",
+      "firstname": "Di Girolamo",
+      "surname": "Michele",
+      "address": "via delle falene, 15",
+      "city": "Ischia",
+      "county": "Naples",
+      "country": "IT",
+      "contacts": [
+        {
+          "id": "4aa82b1d-ca4d-4518-97fa-f5c4b07d5ecf",
+          "type": "mobile",
+          "value": "+3932832832"
+        },
+        {
+          "id": "a4b5fbf4-b6d6-429a-bb4f-77f23e5dd00d",
+          "type": "email",
+          "value": "michele.digirolamo@libero.it"
+        },
+        {
+          "id": "2a9d0fe7-4119-406b-823a-2b90d8ef04e0",
+          "type": "homephone",
+          "value": "+3922333333333"
         }
       ]
     }
@@ -268,19 +304,5 @@
       "name": "Platform Administration"
     }
   ],
-  "sessions": [
-    {
-      "id": "bc0db7ab-76c8-4afe-93db-af79553cf46d",
-      "sessionKey": "bc0db7ab-76c8-4afe-93db-af79553cf46d",
-      "user": {
-        "id": "2",
-        "username": "torellif",
-        "password": "RlRAdGhlYWEwMQ==",
-        "firstname": "Fabrizio",
-        "surname": "Torelli",
-        "role": "4"
-      },
-      "time": 1483473791211
-    }
-  ]
+  "sessions": []
 }

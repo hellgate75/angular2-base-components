@@ -19,6 +19,9 @@ import { AllUsersPageComponent, UserRoleFilterComponent, UserListComponent, User
 import { PageNotFoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FilterBoxComponent } from './components/filterbox/filter-box-component';
 import { SortingBoxComponent, SortingBoxItemComponent } from './components/sortingbox/sorting-box-component';
+import { EditDialogComponent } from './components/editcomponent/edit-dialog-component';
+import { EditFormComponent } from './components/editcomponent/editform/edit-form-component';
+import { EditElementComponent } from './components/editcomponent/formelement/form-element-component';
 
 // Services
 import { AddressBookService } from './services/address-book-service';
@@ -101,7 +104,10 @@ let appRoutes: Routes = [
     PageNotFoundComponent,
     FilterBoxComponent,
     SortingBoxComponent,
-    SortingBoxItemComponent
+    SortingBoxItemComponent,
+    EditDialogComponent,
+    EditFormComponent,
+    EditElementComponent
   ],
   imports: [
     BrowserModule,

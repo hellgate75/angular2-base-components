@@ -1,0 +1,70 @@
+.field {
+  margin-top: 10px !important;
+}
+input, label, select, option {
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif ! important;
+  font-size: 14px ! important;
+  text-align: left;
+}
+.map-item {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.map-item input,
+.map-item select
+{
+  width: 80%;
+  position: relative;
+  float: left;
+  margin-bottom: 5px;
+}
+.map-item .filler
+{
+  width: 20%;
+  position: relative;
+  float: left;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+label {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #8c8c8c;
+}
+label.selector.add > i,
+label.selector.remove > i{
+  font-size: 15px;
+  color: #8c8c8c;
+  margin-left: 5px;
+}
+label.selector.remove > i.fa.fa-minus-circle {
+  color: #97010f ! important;
+}
+label.selector.add > i.fa.fa-plus-circle {
+  color: #08804f ! important;
+  margin-top:    10px;
+  margin-bottom: 10px;
+}
+label.selector.add,
+label.selector.remove{
+  top: -5px;
+  text-transform: uppercase;
+}
+label.selector.add {
+  color: #08804f ! important;
+}
+label.selector.remove {
+  color: #97010f ! important;
+}
+label.selector.add > i:before,
+label.selector.remove > i:before{
+  top: -1px;
+  position: relative;
+}
+label.selector.add > i,
+label.selector.remove > i{
+  cursor: pointer;
+}

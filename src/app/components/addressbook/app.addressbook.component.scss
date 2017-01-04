@@ -69,6 +69,62 @@ div.form-group > span.error,
 div.form-group > span.fa.fa-flash {
   color: #8b211e;
 }
+.ui-buttonset {
+  width: 100%;
+  display: inline;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.action-link {
+  position: relative;
+  float: right;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.action-link > i {
+  font-size: 12px;
+  color: #8c8c8c;
+  margin-left: 5px;
+}
+.action-link > i:before {
+  top: -1px;
+  position: relative;
+}
+.action-link.green,
+.action-link.green > i{
+  color: #08804f;
+}
+.action-link.red,
+.action-link.red > i{
+  color: #97010f;
+}
+label.selector > i {
+  font-size: 15px;
+  color: #08804f ! important;
+  margin-left: 5px;
+}
+label.selector > i.fa.fa-plus-circle {
+  color: #08804f ! important;
+  margin-top:    10px;
+  margin-bottom: 10px;
+}
+label.selector {
+  top: -5px;
+  color: #08804f ! important;
+  text-transform: uppercase;
+}
+label.selector > i:before {
+  top: -1px;
+  position: relative;
+}
+label.selector > i {
+  cursor: pointer;
+}
+
 @media (max-width: $screen-generic-list-xs) {
   .address-book-table > .contact > .row {
     display: inline-block;
