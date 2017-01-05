@@ -1,5 +1,15 @@
 @import "../../variables.scss";
 
+.ui-widget-overlay.ui-front {
+  background-color: #000000;
+  filter: Alpha(Opacity=.3) ! important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+}
+
 * {
   -moz-user-select: none;
   -khtml-user-select: none;
