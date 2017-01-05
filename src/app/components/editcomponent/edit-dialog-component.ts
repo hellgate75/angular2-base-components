@@ -80,6 +80,8 @@ export class EditDialogComponent implements AfterContentInit {
           }.bind(this)
         }
       ],
+      show: {effect: 'slide', direction: 'up'},
+      hide: {effect: 'slide', direction: 'up'},
       closeOnEscape: false,
       draggable: false,
       resizable: false
