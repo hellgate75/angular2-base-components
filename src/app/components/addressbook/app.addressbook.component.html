@@ -29,6 +29,8 @@
   <i class="fa fa-plus-circle" (click)="addContact()" aria-hidden="true"></i>
   Add New Contact
 </label>
+  <div class="alert alert-danger" *ngIf="showError">Unable to {{infoType}} the contact.</div>
+  <div class="alert alert-info" *ngIf="showInfo">Successful executed the {{infoType}} of the contact.</div>
 <br/>
 <app-address-book-table [contacts]="contacts" [types]="contactTypes" [countries]="countries"
                         (update)="updateContact($event)" (delete)="deleteContact($event)" ></app-address-book-table>

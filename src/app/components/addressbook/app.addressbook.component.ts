@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, Inject, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, Inject, EventEmitter, ElementRef } from '@angular/core';
 import { AddressBookService } from '../../services/address-book-service';
 import { Contact, Item } from '../../models/address-book-models';
 import { FilterBoxComponent } from '../filterbox/filter-box-component';
@@ -7,7 +7,9 @@ import { SortingItem, SORTING_STATE, Sorter } from '../../models/back-end-model'
 import { Cloneable } from '../../models/base-model';
 import { CONTACTS_SERVICE_META_KEY } from '../../shared/constants';
 import { EditDialogComponent } from '../editcomponent/edit-dialog-component';
-import { Subject } from 'rxjs'
+import { Subject } from 'rxjs';
+
+declare var jQuery: any;
 
 
 @Component({
@@ -85,7 +87,14 @@ export class AddressBookComponent implements OnInit {
   metaValues: any = {};
   dialogActivation: EventEmitter<Cloneable>;
 
+  // Notification
+  showInfo: boolean = false;
+  showError: boolean = false;
+  infoType: string = '';
+  timeout: any;
+
   constructor(private addressBookService: AddressBookService,
+              @Inject(ElementRef) private elementRef: ElementRef,
               @Inject(CONTACTS_SERVICE_META_KEY) private contactsMeta: any) {
     this.contactsMeta.sorting.forEach((sortItem: any) => {
       this.sortingItems.push (new SortingItem(sortItem.id, sortItem.name, sortItem.sort));
@@ -142,12 +151,37 @@ export class AddressBookComponent implements OnInit {
 
   successXHR(type: string): void {
     // Here code to show message
-    console.log(type + ' successful ...');
+    if (!this.timeout) {
+      this.infoType = type;
+      this.showInfo = true;
+      let offset: number = parseInt(jQuery('div.alert.alert-danger').offset() ? jQuery('div.alert.alert-info').offset().top : '0', 10);
+      jQuery('html, body').animate({
+        scrollTop: offset
+      }, 1000);
+      this.timeout = setTimeout(function() {
+        this.timeout = null;
+        this.showInfo = false;
+        this.infoType = '';
+      }.bind(this), 10000);
+    }
+
   }
 
   unsuccessXHR(type: string): void {
     // Here code to show message
-    console.log(type + ' failed ...');
+    if (!this.timeout) {
+      this.infoType = type;
+      this.showError = true;
+      let offset: number = parseInt(jQuery('div.alert.alert-danger').offset() ? jQuery('div.alert.alert-danger').offset().top : '0', 10);
+      jQuery('html, body').animate({
+        scrollTop: offset
+      }, 1000);
+      this.timeout = setTimeout(function() {
+        this.timeout = null;
+        this.showError = false;
+        this.infoType = '';
+      }.bind(this), 10000);
+    }
   }
 
   deleteContact(contact: Contact): void {
