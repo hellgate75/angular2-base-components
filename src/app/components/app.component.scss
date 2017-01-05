@@ -1,5 +1,13 @@
 @import "../../variables.scss";
 
+* {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
 h1, h2 {
   text-align: center;
   text-overflow: ellipsis;
