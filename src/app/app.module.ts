@@ -22,6 +22,7 @@ import { SortingBoxComponent, SortingBoxItemComponent } from './components/sorti
 import { EditDialogComponent } from './components/editcomponent/edit-dialog-component';
 import { EditFormComponent } from './components/editcomponent/editform/edit-form-component';
 import { EditElementComponent } from './components/editcomponent/formelement/form-element-component';
+import { PagingBoxComponent } from './components/pagingbox/paging-box-component';
 
 // Services
 import { AddressBookService } from './services/address-book-service';
@@ -107,7 +108,8 @@ let appRoutes: Routes = [
     SortingBoxItemComponent,
     EditDialogComponent,
     EditFormComponent,
-    EditElementComponent
+    EditElementComponent,
+    PagingBoxComponent
   ],
   imports: [
     BrowserModule,

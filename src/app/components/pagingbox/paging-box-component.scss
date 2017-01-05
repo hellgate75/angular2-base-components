@@ -1,0 +1,13 @@
+.paging-box {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  &-control {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+}
+.invisible {
+  visibility: hidden;
+}

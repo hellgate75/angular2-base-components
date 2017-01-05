@@ -180,21 +180,25 @@ export class BackEndService {
             searchKey  = request.filter.searchKey + '_gte';
             searchValue  = request.filter.searchValue;
             break;
+          case FILTER_TYPE.NOT_EQUALS:
+            searchKey  = request.filter.searchKey + '_ne';
+            searchValue  = request.filter.searchValue;
+            break;
           default:
             break;
         }
       }
-      if (!!request.paging) {
-        let pageQuery: string = (!!searchKey || !!searchText ? '&' : '?');
-        if (!!request.paging.page) {
-          pageQuery += '_page=' + request.paging.page + (!!request.paging.size ? '&' : '');
-        }
-        if (!!request.paging.size) {
-          pageQuery += '_limit=' + request.paging.size;
-        }
-        if ( pageQuery.length > 2 ) {
-          qryOptions = pageQuery;
-        }
+    }
+    if (!!request.paging) {
+      let pageQuery: string = (!!searchKey || !!searchText ? '&' : '?');
+      if (!!request.paging.page) {
+        pageQuery += '_page=' + request.paging.page + (!!request.paging.size ? '&' : '');
+      }
+      if (!!request.paging.size) {
+        pageQuery += '_limit=' + request.paging.size;
+      }
+      if ( pageQuery.length > 2 ) {
+        qryOptions = pageQuery;
       }
     }
     if (!!request.sorter) {

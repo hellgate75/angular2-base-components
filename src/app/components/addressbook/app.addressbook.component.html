@@ -34,6 +34,7 @@
 <br/>
 <app-address-book-table [contacts]="contacts" [types]="contactTypes" [countries]="countries"
                         (update)="updateContact($event)" (delete)="deleteContact($event)" ></app-address-book-table>
+<paging-box [itemSize]="indexSize" [pageSize]="pageSize" [pageSizeChangeEvent]="pageSizeChangeEvent" (paging)="pagingRequired($event)"></paging-box>
 </div>
 <edit-dialog [metadata]="contactsMeta" [linkeddata]="metaValues" [activation]="dialogActivation"
              [width]="600" [height]="600" (changed)="contactChanged($event)"></edit-dialog>

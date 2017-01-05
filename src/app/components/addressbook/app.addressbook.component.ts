@@ -3,7 +3,7 @@ import { AddressBookService } from '../../services/address-book-service';
 import { Contact, Item } from '../../models/address-book-models';
 import { FilterBoxComponent } from '../filterbox/filter-box-component';
 import { SortingBoxComponent } from '../sortingbox/sorting-box-component';
-import { SortingItem, SORTING_STATE, Sorter } from '../../models/back-end-model';
+import {SortingItem, SORTING_STATE, Sorter, Pager} from '../../models/back-end-model';
 import { Cloneable } from '../../models/base-model';
 import { CONTACTS_SERVICE_META_KEY } from '../../shared/constants';
 import { EditDialogComponent } from '../editcomponent/edit-dialog-component';
@@ -67,23 +67,38 @@ export class AddressBookTableComponent implements OnInit {
   styleUrls: ['./app.addressbook.component.scss']
 })
 export class AddressBookComponent implements OnInit {
+  // Component properties
   title: string = 'Address Book';
   description: string = 'Here you can manage your address book list...';
+  // Component data
   contacts: Contact[] = [];
   contactTypes: Item[] = [];
   countries: Item[] = [];
   /* tslint:disable */
   static filterText: string = '';
   /* tslint:enable */
+  // Component events
   change: string = AddressBookComponent.filterText;
+
+  // Component states
   isError: boolean = false;
   isLoading: boolean = false;
+
+  // Component sorting
   /* tslint:disable */
   static selectedItem: SortingItem = null;
   /* tslint:enable */
   currentItem: SortingItem = AddressBookComponent.selectedItem;
   sortingItems: SortingItem[] = [];
   sorter: Sorter;
+
+  // Component pagind
+  pageSize: number = 4;
+  pager: Pager;
+  indexSize: number = 0;
+  pageSizeChangeEvent: EventEmitter<number>;
+
+  // Component edit dialog meta
   metaValues: any = {};
   dialogActivation: EventEmitter<Cloneable>;
 
@@ -99,11 +114,20 @@ export class AddressBookComponent implements OnInit {
     this.contactsMeta.sorting.forEach((sortItem: any) => {
       this.sortingItems.push (new SortingItem(sortItem.id, sortItem.name, sortItem.sort));
     });
+    this.pager = Pager.empty(this.pageSize);
     this.metaValues = {
       'contacts': this.contactTypes,
       'countries': this.countries
     };
     this.dialogActivation = new EventEmitter<Cloneable>();
+    this.pageSizeChangeEvent = new EventEmitter<number>();
+  }
+
+  pagingRequired(event: Pager): void {
+    console.log('Required paging : ');
+    console.log(event);
+    this.pager.update(event.clone());
+    this.reload(AddressBookComponent.filterText);
   }
 
   contactChanged(event: Cloneable): void {
@@ -249,7 +273,8 @@ export class AddressBookComponent implements OnInit {
     if (AddressBookComponent.filterText !== '') {
       this.reload(AddressBookComponent.filterText);
     } else {
-      this.addressBookService.getContacts(this.sorter).subscribe(
+      this.requireFullSize();
+      this.addressBookService.getContacts(this.sorter, this.pager).subscribe(
         (all: Contact[]) => {
           all.forEach((contact: Contact) => {
             this.contacts.push(new Contact(contact));
@@ -277,10 +302,19 @@ export class AddressBookComponent implements OnInit {
     );
   }
 
+  requireFullSize() {
+    this.addressBookService.getContactSize().subscribe(
+      (next: number) => {
+        this.indexSize = next;
+      }
+    );
+  }
+
   reload(filter: string): void {
     this.isLoading = true;
+    this.requireFullSize();
     AddressBookComponent.filterText = filter || '';
-    this.addressBookService.getContactsByFullText(filter, this.sorter).subscribe(
+    this.addressBookService.getContactsByFullText(filter, this.sorter, this.pager).subscribe(
       (all: Contact[]) => {
         this.contacts.splice(0, this.contacts.length);
         all.forEach((contact: Contact) => {

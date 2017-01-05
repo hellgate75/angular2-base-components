@@ -51,11 +51,11 @@ export class SortingItem {
 
 export enum REQUEST_TYPE {FULL, QUERY, INSERT, UPDATE, DELETE};
 
-export enum FILTER_TYPE {KEYVALUE, LIKE, LESSTHANEQ, GREATERTHANEQ, FULL_TEXT};
+export enum FILTER_TYPE {KEYVALUE, LIKE, LESSTHANEQ, GREATERTHANEQ, NOT_EQUALS, FULL_TEXT};
 
 export class Pager {
   page: number = 1;
-  size: number = 0;
+  size: number = 4;
 
   constructor(size: number, page?: number) {
     if (!!size) {
@@ -70,6 +70,17 @@ export class Pager {
     return this.page;
   }
 
+  limit(limit?: number): number {
+    if (undefined !== limit) {
+      if (!!limit) {
+        this.size = limit;
+      } else {
+        this.size = 0;
+      }
+    }
+    return this.size;
+  }
+
   next(): void {
     this.page ++;
   }
@@ -80,6 +91,27 @@ export class Pager {
       this.page = 1;
     }
   }
+
+  clone(): Pager {
+    return new Pager(this.size, this.page);
+  }
+
+  update(element: any): void {
+    if (!!element) {
+      if (!!element.size) {
+        this.size = element.size;
+      }
+      if (!!element.page) {
+        this.page = element.page;
+      }
+    }
+  }
+
+  /* tslint:disable */
+  static empty(size: number): Pager {
+    return new Pager(size);
+  }
+  /* tslint: enble */
 }
 
 export class Sorter {
@@ -121,9 +153,10 @@ export class Request {
   }
 
   /* tslint:disable */
-  static AsFullItemList(service: string, sorter?: Sorter): Request {
+  static AsFullItemList(service: string, sorter?: Sorter, paging?: Pager): Request {
     let request: Request = new Request(service, REQUEST_TYPE.FULL);
     request.sorter = sorter || null;
+    request.paging = paging || null;
     return request;
   }
 
