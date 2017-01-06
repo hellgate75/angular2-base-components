@@ -1,4 +1,5 @@
-import {Component, ElementRef, AfterContentInit, Inject, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import {Component, ElementRef, AfterContentInit, Inject, Input, Output, EventEmitter, OnChanges,
+  SimpleChanges  } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { ItemChange } from '../edit-dialog-component';
 

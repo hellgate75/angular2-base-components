@@ -34,6 +34,9 @@ label {
   font-size: 14px;
   color: #8c8c8c;
 }
+label.selector.remove {
+  font-size: 12px ! important;
+}
 label.selector.add > i,
 label.selector.remove > i{
   font-size: 15px;
@@ -59,9 +62,12 @@ label.selector.add {
 label.selector.remove {
   color: #97010f ! important;
 }
-label.selector.add > i:before,
+label.selector.add > i:before {
+  top: 0px;
+  position: relative;
+}
 label.selector.remove > i:before{
-  top: -1px;
+  top: 1px;
   position: relative;
 }
 label.selector.add > i,

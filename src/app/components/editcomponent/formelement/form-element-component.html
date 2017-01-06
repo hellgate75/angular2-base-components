@@ -1,13 +1,13 @@
-<div id="fld_{{field}}" class="ui form">
-  <div *ngIf="type === 'string'" class="field">
+<div id="fld_{{field}}" class="ui form" [ngSwitch]="type">
+  <div *ngSwitchCase="'string'" class="field">
     <label [for]="field">{{name}}</label>
     <input type="text" [id]="field" (change)="textKeyDown($event)" [(ngModel)]="value">
   </div>
-  <div *ngIf="type === 'number'" class="field">
+  <div *ngSwitchCase="'number'" class="field">
     <label class="label" [for]="field">{{name}}</label>
-    <input type="text" [id]="field" (change)="textKeyDown($event)" [(ngModel)]="value">
+    <input type="nuber" [id]="field" (change)="textKeyDown($event)" [(ngModel)]="value">
   </div>
-  <div *ngIf="type === 'list'" class="field">
+  <div *ngSwitchCase="'list'" class="field">
     <label class="label" [for]="field">{{name}}</label>
     <select [id]="field" ([ngModel])="value" (change)="listSelect($event)">
       <option *ngFor="let opt of getLinkedValues()"
@@ -15,11 +15,11 @@
               [value]="getOptionListKey(opt)">{{getOptionListValue(opt)}}</option>
     </select>
   </div>
-  <div *ngIf="type === 'map'" class="field">
+  <div *ngSwitchCase="'map'" class="field">
     <label class="label" [for]="field">{{name}}</label>
     <label class="selector add">
       <i class="fa fa-plus-circle" (click)="addItem()" aria-hidden="true"></i>
-      New Element in {{name}}
+      Add New Element in {{name}}
     </label>
     <div class="map-item" *ngFor="let listItem of value; let i = index;">
       <select [id]="field" ([ngModel])="value" (change)="listSelectMap($event, i, listItem)">
@@ -32,11 +32,15 @@
       <div class="filler">
         <label class="selector remove">
           <i class="fa fa-minus-circle" (click)="removeItem(i, listItem)" aria-hidden="true"></i>
-          Remove
+          Remove Item
         </label>
       </div>
       <input type="text" [id]="'text_'+field" (change)="textMapKeyDown($event, i, listItem)" [(ngModel)]="optionValues[i][getOptionValueKey(listItem)]">
       <div class="filler"></div>
     </div>
   </div>
-</div>
+  <div *ngSwitchDefault class="field">
+    <label class="label" [for]="field">{{name}}</label>
+    <label [id]="field" class="label">{{value}}</label>
+  </div>
+  </div>
